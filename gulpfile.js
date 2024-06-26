@@ -1,3 +1,5 @@
+const gulp = require('gulp')
+
 function funcaoPadrao(callback) {
   console.log("Executando via Gulp");
   callback();
@@ -13,5 +15,6 @@ function dizTchau() {
   console.log("Tchau Gulp");
 }
 
-exports.default = funcaoPadrao; //Tarefas publicas, são as que exportamos
+//exports.default = funcaoPadrao; //Tarefas publicas, são as que exportamos
+exports.default = gulp.series(funcaoPadrao, dizOi);
 exports.dizOi = dizOi;
