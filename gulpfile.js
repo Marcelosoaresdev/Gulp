@@ -3,13 +3,13 @@ const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 
 function compilaSass() {
-  return gulp.src("./source/styles/main.scss") // Pegar os arquivos fonte
-    .pipe(sourcemaps.init())
+  return gulp.src("./source/styles/main.scss") // Pega os arquivos da pasta
+    .pipe(sourcemaps.init()) // transforma o arquivo compilado .css ao arquivo fonte .scss para melhor depuração no navegador
     .pipe(sass({
       outputStyle: 'compressed' // Deixa o arquivo comprimido = menos pesado
     })) // Executar a compilação do sass
-    .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest("./build/styles")); // Manda os arquivos para a pasta
+    .pipe(sourcemaps.write('./maps')) // Escrevemos os sourcemaps na mesma pasta dos arquivos comprimidos.
+    .pipe(gulp.dest("./build/styles")); // Salvamos os arquivos comprimidos e os sourcemaps na pasta styles dentro de build
 }
 
 function funcaoPadrao(callback) {
